@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import plotly.express as px
 from dash import dcc
+import numpy as np
 
 location = 'currencies_data'
 
@@ -22,15 +23,18 @@ def data_cleansing():
     df_cl = load_data(location)
     df_date = pd.to_datetime(df_cl['<DATE>'], format="%Y%m%d")
     df_year = df_date.dt.year
+    df_open = np.log10(df_cl['<OPEN>'])
     df_cl['Date'] = df_date
     df_cl['Year'] = df_year
+    df_cl['Open'] = df_open
 
+    print(df_open, df_cl['<OPEN>'])
     return df_cl
 
 def create_plot():
 
     df_plot = data_cleansing()
-    fig = px.line(df_plot, y='<OPEN>', x='Date', color='<TICKER>')
+    fig = px.line(df_plot, y='Open', x='Date', color='<TICKER>')
     fig.show()
 
 
