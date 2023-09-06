@@ -6,5 +6,5 @@ This repo contains a dashboard of currency rates for most popoular currencies. I
 
 Feel free to download and play around with this repo. You can download only dashboard.html file to see capabilities of Plotly. When you click on elements on the legend (rigtht part of dashboard) you can hide or unhide desired plot.
 
-Data for this dashboard were obtaioined from: stooq.com/db/h
+Data for this dashboard were obtained from: stooq.com/db/h
  
