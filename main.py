@@ -8,7 +8,7 @@ location = 'currencies_data'
 
 
 def load_data(location):
-
+    # reads all files from desired location and joins them into one file
     path, dirs, files = next(os.walk(f'./{location}/'))
     df_list = []
 
@@ -19,11 +19,11 @@ def load_data(location):
     return df
 
 def data_cleansing():
-
+    # load data
     df_cl = load_data(location)
     df_date = pd.to_datetime(df_cl['<DATE>'], format="%Y%m%d")
     df_year = df_date.dt.year
-    df_open = np.log10(df_cl['<OPEN>'])
+    df_open = df_cl['<OPEN>']
     df_cl['Date'] = df_date
     df_cl['Year'] = df_year
     df_cl['Open'] = df_open
